@@ -1,0 +1,73 @@
+# 状态码
+
+| 状态码 | 说明 | 代码 |
+| --- | --- | --- |
+| 1 | 成功 | SUCCESS |
+| 500 | 服务异常 | EXCEPTION_SERVER|
+| 1000 | 请输入用户名和密码 | ERR\_EMPTY\_ALL |
+| 1001 | 请输入用户名 | ERR\_EMPTY\_PHONE |
+| 1002 | 请输入密码 | ERR\_EMPTY\_PASS |
+| 1003 | 账号标识不存在 | ERR\_EMPTY\_UID |
+| 1004 | 请输入成员用户名 | ERR\_EMPTY\_MID |
+| 1005 | 账号密令不存在 | ERR\_EMPTY\_TOKEN |
+| 1006 | 请添加昵称 | ERR\_EMPTY\_NAME |
+| 1007 | 请选择性别 | ERR\_EMPTY\_SEX |
+| 1008 | 请添加出生日期 | ERR\_EMPTY\_DATEB |
+| 1009 | 请输入身高 | ERR\_EMPTY\_STATURE |
+| 1010 | 请输入体重 | ERR\_EMPTY\_WEIGHT |
+| 1011 | 请输入验证码 | ERR\_EMPTY\_CODE |
+| 1012 | 请输入查询时间 | ERR\_EMPTY\_DATET |
+| 1013 | 请输入邮箱地址 | ERR\_EMPTY\_EMAIL |
+| 2001 | 账号未注册 | ERR\_NO\_USER |
+| 2003 | 账号已存在 | ERR\_HAS\_USER |
+| 2004 | 成员账号已存在 | ERR\_HAS\_MEMBER |
+| 2005 | 此身份证已被创建账户 | ERR\_HAS\_IID |
+| 2006 | 身份证号码格式错误 | ERR\_IID |
+| 3001 | 账号密令识别错误 | ERR\_WRONG\_TOKEN |
+| 3002 | 用户名或者密码错误 | ERR\_WRONG\_USE |
+| 3003 | 短信验证码错误 | ERR\_WRONG\_CODE |
+| 3004 | 请填写正确的验证码 | ERR\_WRONG\_COD |
+| 3005 | 输入密码不一致 | ERR_WRONG\_SAME_ |
+| 3006 | 原密码错误 | ERR\_WRONG\_PASS |
+| 3007 | 请填写正确的邮箱地址 | ERR\_WRONG\_EM |
+| 3008 | 错误次数过多，请15分钟后再试 | ERR\_WRO |
+| 3009 | 无法关注自己，请重新输入 | ERR_WEONG_ |
+| 3010 | 账号密令识别错误 | ERR\_RELAT |
+| 3011 | 未关注该账号 | ERR\_NOT\_RELATE |
+| 3012 | 关联请求不存在 | ERR_APRELATE_NOTFOND |
+| 3014 | accout与profile已经关联 | ERR_APRELATE_EXIEST|
+| 3015 | 关联请求已过期(dev qa默认10分钟) | ERR_APRELATE_EXPIRE |
+| 3016 | 此账户已经超过关联人数上线 | ERR\_UP\_LIMIT |
+| 3017 | 重复新增关联请求 | ERR_APRELATE_DUPLICATE |
+| 3018 | profile未找到 | ERR_PROFILE_NOTFONT |
+| 4002 | 验证码发送失败 | ERR\_MSG\_SEND |
+| 4003 | 操作过于频繁 | ERR\_MSG\_TOO\_MUCH |
+| 4004 | 消息类型不正确 | ERR\_MSG\_TYPE |
+| 4005 | 验证码未发送 | ERR\_MSG\_NO\_SEND |
+| 5001 | 读取系统数据错误 | ERR\_DB |
+| 5002 | 用户无操作权限 | ERR\_NO\_PRIVILEGE |
+| 6001 | 设备蓝牙地址错误 | ERR\_DEVICE\_BLUETOOTH |
+| 6002 | 设备版本号错误 | ERR\_DEVICE\_VERSION |
+| 6003 | 设备名称错误 | ERR\_DEVICE\_NAME |
+| 6004 | 设备类型错误 | ERR\_DEVICE\_TYPE |
+| 7001 | 血压上传部分参数为空 | ERR\_BP\_PARAMA\_EMPTY |
+| 7002 | 血压数据格式错误 | ERR\_BP\_DATA\_JSON |
+| 7003 | 血压数据上传失败 | ERR\_BP\_DB\_UPLOAD |
+| 7004 | 血压数据上传时间格式错误 | ERR\_BP\_DB\_UPLOAD\_TIME\_FORMAT |
+| 7005 | 血压数据页面大小参数错误 | ERR\_BP\_TYPE\_PAGESIZE |
+| 7006 | 无血压报告 | ERR\_NO\_BP\_REPORT |
+| 7007 | 无用户GDS病历 | ERR\_NO\_GDS\_PATIENT |
+| 7008 | 创建用户GDS病历失败 | ERR\_CREATE\_GDS\_PATIENT |
+| 7009 | 无用户健康信息 | ERR\_NO\_HEALTH\_INFO |
+| 7010 | 早于加入健康计划 | ERR\_NOT\_AFTER\_PATIENT\_TIME |
+| 7011 | 服药记录为空 | ERR\_EMPTY\_USER\_MEDICINE\_RECORD |
+| 8001 | 校验失败 | ERR\_VALID\_DM |
+| 8002 | 诊断创建失败\(taskServiceAgent\) | ERR\_CREATE |
+| 8003 | 通过TOKEN获取StaffID失败 | ERR\_GET\_STAFF\_ID\_BY\_TOKEN |
+| 8004 | 病历保存参数有误 | ERR\_VALID\_PROFILE\_SAVE |
+| 8005 | 病历查询列表机构ID参数有误 | ERR\_QUERY\_PROFILE\_LIST\_COMPANY\_ID |
+| 8006 | 病历查询列表ID参数有误 | ERR\_QUERY\_PROFILE\_LIST\_ID |
+| 8007 | 服务者无当前机构权限 | ERR |
+| 8008 | 当前机构无此患者 | ERR\_NO\_PROFILE\_IN\_COMPNAY |
+| 8009 | 当前账户无诊断权限 | ERR\_ENTERPRICE\_NO\_OPER |
+

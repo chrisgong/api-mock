@@ -1,0 +1,153 @@
+>postman数据：https://www.getpostman.com/collections/d637b45d27addf4deb6e
+
+# 查询收到的关联请求列表 [GET /accProRelate/list/{token}{?id}{&type}]
+
+功能：查询account收到的与profile关联的请求
+
+返回参数说明：
+```
+"id":123,
+"companyName":"机构名称",//申请者机构名称
+"reqName":"张三",//申请者姓名
+"profileName":"李四",//profile姓名
+"profileFace":"",//头像
+"status": 2,//0=已同意，1=未同意，2=过期
+"time":"2016-08-04 10:34:11"//时间
+```
++ Parameters
+    + token:5a7c78beda434f49bc8e80a00da0dbe2 (required,String) - 用户登录后的token
+    + id:0(required,number) - 关联请求的id
+    + type:0(required,number) - 默认下一页0 （返回大于id的数据）上一页1（返回小于id的数据）
+    + pageSize:15 (optional, number) - 每页条数，默认为15
++ Response 200 (application/json)
+  {
+    "code": 1,
+    "data": {
+      "total": 1,
+      "list": [
+        {
+          "companyName": "希盟医院",
+          "id": 209,
+          "profileFace": "http://fimg.cimyun.com/images/wap/default_img.jpg",
+          "profileName": "eva",
+          "reqName": "希盟疗养院",
+          "status": 2,
+          "time": "2016-08-17 11:38:41"
+        }
+      ]
+    },
+    "success": true
+  }
+
+# 查询发出的关联请求列表 [GET /accProRelate/reqlist/{token}{?id}{&type}]
+
+功能：查询account发出的account与profile关联的请求
+
+返回参数说明：
+```
+"id":123,
+"profileName":"李四",//profile姓名
+"profileFace":"",//头像
+"account": "13701220299",//被关联人的手机号
+"accountName":"yxiao",//被关联人的名称（未注册，则为空）
+"status": 2,//0=已同意，1=未同意，2=过期
+"time":"2016-08-04 10:34:11"//时间
+```
++ Parameters
+    + token:5a7c78beda434f49bc8e80a00da0dbe2 (required,String) - 用户登录后的token
+    + id:0(required,number) - 关联请求的id
+    + type:0(required,number) - 默认下一页0 （返回大于id的数据）上一页1（返回小于id的数据）
+    + pageSize:15 (optional, number) - 每页条数，默认为15
++ Response 200 (application/json)
+  {
+    "code": 1,
+    "data": {
+      "total": 1,
+      "list": [
+        {
+          "id": 209,
+          "profileFace": "http://fimg.cimyun.com/images/wap/default_img.jpg",
+          "profileName": "eva",
+          "status": 2,
+          "account": "13701220299",
+          "accountName":"yxiao",
+          "time": "2016-08-17 11:38:41"
+        }
+      ]
+    },
+    "success": true
+  }
+
+
+#  同意关联请求 [POST /accProRelate/isAgree]
+
+功能：同意关联请求
+
+|名称|类型|是否必需|说明|
+|:---|:---|:---|:---|
+|token|String|Y|登录之后的token|
+|reqId|Integer|Y|请求id|
+|type|Integer|N|默认为0，表示同意|
+
++ Request (application/json)
+  {
+      "token":"5a7c78beda434f49bc8e80a00da0dbe2",
+      "reqId":137,
+      "type":0
+  }
+
++ Response 200 (application/json)
+  {
+    "success" : true,
+    "code" : 1
+  }
+
+#  查询未读关联请求数 [GET /accProRelate/unRead/{token}]
+
+功能：查询未读关联请求数
+
++ Parameters
+    + token:5a7c78beda434f49bc8e80a00da0dbe2 (required,String) - 用户登录后的token
+
++ Response 200 (application/json)
+  {
+    "code": 1,
+    "data": {
+      "count": 1
+    },
+    "success": true
+  }
+
+#  新增关联请求 [POST /accProRelate/add]
+功能：新增关联请求
+```json
+{
+  "token":"5a7c78beda434f49bc8e80a00da0dbe2",
+  "account":"13701220299",
+  "profileId":5
+}
+```
+返回错误的文案可参考hmp
+```java
+  case 1:
+  case 3015:
+      return new AjaxResp(true, "邀请关注的通知已经发送，请等待对方进行关注", null),
+  case 3014:
+      return new AjaxResp(false, "该手机号已关注此账户，无需重复邀请", null);
+  case 3017:
+      return new AjaxResp(false, "该手机号正在邀请中，请等待", null);
+  default:
+      return new AjaxResp(false, "邀请失败", null);
+```
+
++ Request (application/json)
+{
+    "token":"5a7c78beda434f49bc8e80a00da0dbe2",
+    "account":"13701220299",
+    "profileId":5
+}
++ Response 200 (application/json)
+  {
+     "success" : true,
+     "code" : 1
+  }
