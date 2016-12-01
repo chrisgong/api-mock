@@ -1,0 +1,28 @@
+# 用户登录 [POST /user/login]
+
+客户端调用接口进行用户登录，返回新token及用户基本信息
+
+  |名称|类型|是否必需|说明|
+  |----|----|----|----|
+  |phone|int|Y|用户手机号|
+  |password|String|Y|密码|
+  |imei|String|Y|设备imei号|
+  |type|int|Y|设备类型，0:安卓;1:ios|
+  |platform|String|Y|默认mobile|
+
++ Request (application/json)
+  {
+    "phone": "15210607694",
+    "password": "register"
+  }
+
++ Response 200 (application/json)
+  {
+      "success": true,
+      "code": 1,
+      "data": {
+          "token":"588574e36410eac22170b167e5cef2c3",
+          "uid":123,
+          "name":"张三"
+      }
+  }
