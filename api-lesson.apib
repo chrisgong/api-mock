@@ -1,0 +1,241 @@
+# 发布课程 [POST /chapter/add]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|title|Y|String||
+|intro|N|String||
+|content|Y|String||
+|free|Y|Integer|0 收费 1免费|
+|duration|Y|Long|学习时长(ms)|
+|lessonId|Y|Long|专辑id|
+|cover|Y|String|封面|
+|coverSize|Y|String|50*50|
+
++ Request (application/json)
+  {
+    "phone": "15210607694",
+    "password": "register"
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+          "chapterId":1
+      }
+  }
+
+
+# 课程详情 [GET /chapter/detail]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|chapterId|Y|Long||
+
++ Parameters
+    + chapterId:1910300 (required,int) - 课程ID
+
++ Request (application/json)
+  {
+    "phone": "15210607694",
+    "password": "register"
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+          "access":0,//0 有权限访问 1 无权限访问
+          "pricePreMonth":"1.00",
+          "chapter":{
+                    "课程结构体"
+          }
+      }
+  }
+
+
+# 课程列表 [POST /chapter/list]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|free|N|Integer|0 收费 1 免费 不传查所有|
+|time|N|Long|翻页数据||
+|lessonId|Y|Long||
+
++ Request (application/json)
+  {
+    "free": 0,
+    "time": 1230912380912
+    "lessonId": 110
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+          "list":[
+              {
+                  "课程结构体"
+              }
+          ]
+      }
+  }
+
+
+# 点赞 [POST /chapter/like]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|chapterId|Y|Long||
+|status|Y|Integer|0 点赞 1 取消点赞|
+
++ Request (application/json)
+  {
+    "chapterId": 110,
+    "status": 0
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+          "likeNum":100 //当前点赞总数
+      }
+  }
+
+
+# 课程评论 [POST /chapter/comment]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|chapterId|Y|Long||
+|content|Y|String||
+|replyUid|N|Long||
+
++ Request (application/json)
+  {
+    "chapterId": 110,
+    "content": "commit lesson"
+    "replyUid": 129010
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "comment":{
+              "commentId":1,
+              "chapterId":1,
+              "type":1,
+              "uid":1,
+              "nick":"哈哈",
+              "avatar":"1.jpg",
+              "content":"哈哈",
+              "replyUid":2,
+              "replyNick":"呵呵",
+              "replyAvatar": "1.jpg",
+              "createTime":21212
+        }
+      }
+  }
+
+
+# 删除评论 [POST /chapter/comment/delete]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|commentId|Y|Long||
+
++ Request (application/json)
+  {
+    "commentId": 110,
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+      }
+  }
+
+
+# 修改课程 [POST /chapter/update]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|chapterId|Y|Long||
+|title|Y|String||
+|intro|N|String||
+|content|Y|String||
+|free|Y|Integer|0 收费 1免费|
+|lessonId|Y|Long|专辑ID|
+|duration|Y|Long|时长(ms)|
+
++ Request (application/json)
+  {
+    "chapterId": 110,
+    "title": "title",
+    "intro": "intro",
+    "content": "content",
+    "free": 1,
+    "lessonId": 110,
+    "duration": 150
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+      }
+  }
+
+
+# 删除课程 [POST /chapter/delete]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|chapterId|Y|Long||
+
++ Request (application/json)
+  {
+    "chapterId": 110,
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+      }
+  }
+
+
+# 课程评论点赞 [POST /chapter/comment/like]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|chapterId|Y|Long||
+|commentId|Y|Long||
+|status|Y|Integer|0 点赞 1 取消点赞|
+
++ Request (application/json)
+  {
+    "chapterId": 110,
+    "commentId": 110,
+    "status": 0
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+      }
+  }

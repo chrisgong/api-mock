@@ -1,0 +1,74 @@
+# 未读数 [POST /unread]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|noticeTime|Y|Long|最后通知时间|
+|commentTime|Y|Long|最后评论时间|
+|subscribeTime|Y|Long|最后订阅时间|
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "notice":{"time":100,"count":11},//time只有初始化时传
+        "comment":{"time":100,"count":11},//time只有初始化时传
+        "subscribe":{"time":100,"count":11},//time只有初始化时传
+      }
+  }
+
+
+# 通知 [POST /unread/notice]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|time|Y|Long|翻页|
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "list": [
+            {
+                "id": 1,
+                "uid":1,
+                "cover":"1.jpg",
+                "title":"主标题",
+                "subtitle":"副标题",
+                "createTime": 100,
+                "location":"11",
+                "type":0, //0 收款 1 才主 2 专辑 3 课程 4 h5
+            }
+        ]
+      }
+  }
+
+
+# 评论消息 [POST /unread/comment]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|time|Y|Long|翻页|
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "list": [
+            {
+                "commentMsgId": 1,
+                "commentId":1,
+                "uid": 1,
+                "type": 1,// 1 评论你的课程 2 回复了你
+                "chapterId": 1,
+                "content": "",
+                "fromUid": 1,
+                "fromNick": "萌多多",
+                "fromAvatar": "1.jpg",
+                "createTime": 100
+            }
+        ]
+      }
+  }
