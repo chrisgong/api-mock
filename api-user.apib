@@ -1,42 +1,29 @@
-# 首页 [POST /home/v2]
+# 登录 [POST /user/login]
 
 |参数|必选|类型|参数说明|
 |---|---|---|---|
-|page|否|int|精选专辑的页码	从1开始,只有第一页会返回banner和订阅数|
-|time|否|Long|已读时间|
+|us|是|String|登录名|
+|ps|是|String|密码|
 
 + Request (application/json)
   {
-    "page": 0,
-    "time": 15210607694
+    "us": "18618416321",
+    "ps": "1234567"
   }
 
 + Response 200 (application/json)
   {
     "c": 0,
+    "m": ""
     "d": {
-        "banner": [                       //banner，仅第一页返回
-            {
-                "id": 1,
-                "type": 1,                //1：达人   2:课程    3:H5  4:专辑
-                "title": "标题",
-                "pic": "/a/2.png",
-                "target": "12345"       //根据type不同，分别为达人id、课程id、H5地址、专辑
-            }
-        ],
-        "lesson": [                       //推荐专辑
-            {
-                "id": 73,
-                "uid": 15120828,
-                "cover": "/a/g1/M00/A4/59/rB8PfVYCfZWAIfbuAAAtg91hLok320.jpg",
-                "about": "简介2",
-                "name": "专辑名2",
-                "title": "专栏名",
-                "payType": 1,
-                "price": "0.03",
-                "chapterNum": 0,
-                "studentNum": 0
-            }
-        ]
+      "username": "用户142918", //登录账号
+      "name": "文东", //真实姓名
+      "tel": "18618416321",
+      "gender": 0 //0: 男, 1: 女
+      "role": 0 //0: 免费, 1: VIP
+      "vipinfo": {
+          "subject": 0 //科目
+          "models": 1 //车型
+      }
     }
   }
