@@ -201,3 +201,27 @@
         ]
       }
   }
+
+# 提交单次答题结果 [POST /exercise/submit]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|token|Y|String|用户ID|
+|eid|Y|String|题目ID|
+|result|Y|Boolean|做题结果对错|
+
++ Request (application/json)
+  {
+    "token": "qwkdpqwkdpjoj12312-0",
+    "eid": 1029,
+    "result": false
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+
+      }
+  }
