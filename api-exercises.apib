@@ -1,4 +1,4 @@
-# 题库设置 [POST /test/setting]
+# 题库设置 [POST /exercise/setting]
 
 |参数|必选|类型|参数说明|
 |---|---|---|---|
@@ -19,5 +19,110 @@
       "m": "",
       "d": {
 
+      }
+  }
+
+# 章节列表 [POST /exercise/section]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|type|Y|Integer|0: 科目一, 1: 科目四, 2: 恢复驾照, 3: 资格证|
+|subType|Y|Integer|0: 小车, 1: 货车, 2: 客车, 3: 摩托车, 4: 危险品, 5: 出租车, 6: 教练员|
+
++ Request (application/json)
+  {
+    "type": 0,
+    "subType": 3
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "chapters": [
+          {
+            "id": 1029,
+            "name": "专项练习一"
+          },{
+            "id": 1031,
+            "name": "专项练习二"
+          },{
+            "id": 1041,
+            "name": "专项练习三"
+          },{
+            "id": 1055,
+            "name": "专项练习四"
+          },
+        ]
+      }
+  }
+
+# 习题列表 [POST /exercise/list]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|type|Y|Integer|0: 科目一, 1: 科目四, 2: 恢复驾照, 3: 资格证|
+|subType|Y|Integer|0: 小车, 1: 货车, 2: 客车, 3: 摩托车, 4: 危险品, 5: 出租车, 6: 教练员|
+|section|Y|Integer|章节ID|
+
++ Request (application/json)
+  {
+    "type": 0,
+    "subType": 3,
+    "section": 1031
+  }
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "total": 1311 //题目总数
+        "exercises": [
+          {
+            "id": 1029,
+            "type": 0, //0:单选 1:多选 2:判断
+            "title": "驾驶机动车在道路上范围交通安全法的行为, 属于什么行为?"
+            "image": ["http://aaa.jpg", "http://aaa.jpg"]
+            "video": ["http://aaa.mp4", "http://aaa.mp4"]
+            "answers": [
+              {
+                "right": true //是否正确答案
+                "content": "违章行为"
+              },{
+                "right": false
+                "content": "违法行为"
+              },{
+                "right": false
+                "content": "过失行为"
+              },{
+                "right": false
+                "content": "违规行为"
+              },
+            ]
+          },{
+            "id": 1031,
+            "type": 0, //0:单选 1:多选 2:判断
+            "title": "驾驶机动车在道路上范围交通安全法的行为, 属于什么行为?"
+            "image": ["http://aaa.jpg", "http://aaa.jpg"]
+            "video": ["http://aaa.mp4", "http://aaa.mp4"]
+            "answers": [
+              {
+                "right": true //是否正确答案
+                "content": "违章行为"
+              },{
+                "right": false
+                "content": "违法行为"
+              },{
+                "right": false
+                "content": "过失行为"
+              },{
+                "right": false
+                "content": "违规行为"
+              },
+            ]
+          }
+        ]
       }
   }
