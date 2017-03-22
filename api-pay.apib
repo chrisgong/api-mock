@@ -3,12 +3,56 @@
 |参数|必选|类型|参数说明|
 |---|---|---|---|
 |token|Y|String|用户ID|
+|type|Y|Integer|0: 科目一, 1: 科目四, 2: 恢复驾照, 3: 资格证|
+|subType|Y|Integer|0: 小车, 1: 货车, 2: 客车, 3: 摩托车, 4: 危险品, 5: 出租车, 6: 教练员|
 
 + Response 200 (application/json)
   {
       "c": 0,
       "m": "",
       "d": {
+        "orderId": 181726, //订单ID
+        "createTime": 1929812912, //订单创建时间
+        "info": "联创交规VIP", //订单内容
+        "price": 51 //订单价格
+        "orderUrl": "http://aplipay.com/q12dj120dj192d12d" //支付宝订单信息
+      }
+  }
 
+# 处理订单(推荐人) [POST /pay/dispose]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|token|Y|String|用户ID|
+|referrer|Y|String|用户ID|
+|orderId|Y|Integer|订单ID|
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "orderId": 181726, //新订单ID
+        "createTime": 1929812912, //订单创建时间
+        "info": "联创交规VIP", //订单内容
+        "price": 51 //订单价格
+        "orderUrl": "http://aplipay.com/q12dj120dj192d12d" //支付宝订单信息
+      }
+  }
+
+# 支付结果 [POST /pay/result]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|token|Y|String|用户ID|
+|orderId|Y|Integer|订单ID|
+|result|Y|Integer|订单支付结果: 0: 失败, 1: 成功, 2: 超时|
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "verify": true //服务端校验订单支付结果后返回真实支付结果
       }
   }
