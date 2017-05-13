@@ -67,8 +67,11 @@
 
 + Request (application/json)
   {
-    "token": "qwkdpqwkdpjoj12312-0",
-    "section": 1031
+    "token": "qwkdpqwkdpjoj12312-0", //用户token
+    "section": [1031, 1021], //章节id
+    "type": 0, //练习模式 0: 顺序练习, 1: 随机练习, 2: 专项练习, 3: 章节练习, 4:模拟考试, 5: 继续上次, 6: 我的错题
+    "pageNum": 1, //页码
+    "pageSize": 10 //一页条数
   }
 
 + Response 200 (application/json)
@@ -76,7 +79,9 @@
       "c": 0,
       "m": "",
       "d": {
-        "total": 1311 //题目总数
+        "total": 1311, //题目总数
+        "pageSize": 10,
+        "pageNum": 2,
         "exercises": [
           {
             "id": 1029,
@@ -129,77 +134,6 @@
           }
         ]
       }
-  }
-
-# 模拟考试习题列表 [POST /exercise/exam]
-
-|参数|必选|类型|参数说明|
-|---|---|---|---|
-|token|Y|String|用户ID|
-
-+ Request (application/json)
-  {
-    "token": "qwkdpqwkdpjoj12312-0",
-  }
-
-+ Response 200 (application/json)
-  {
-      "c": 0,
-      "m": "",
-      "d": {
-        "total": 1311 //题目总数
-        "exercises": [
-          {
-            "id": 1029,
-            "type": 0, //0:单选 1:多选 2:判断
-            "title": "驾驶机动车在道路上范围交通安全法的行为, 属于什么行为?"
-            "image": ["http://aaa.jpg", "http://aaa.jpg"]
-            "video": ["http://aaa.mp4", "http://aaa.mp4"]
-            "explain": "醉酒驾驶, 有公安机关约束至酒醒. 吊销机动车驾驶证, 已发追究刑事责任, 5年内不得重新取得驾驶证.", //文字讲解
-            "audioExplain": "http://aaa.mp3", //语音讲解
-            "videoExplain": "http://aaa.mp4", //语音讲解
-            "answers": [
-              {
-                "right": true //是否正确答案
-                "text": "违章行为" //文本答案内容
-                "image": "http://aaa.jpg" //图片答案内容
-              },{
-                "right": false
-                "text": "违法行为"
-                "image": "http://aaa.jpg"
-              },{
-                "right": false
-                "text": "过失行为"
-                "image": "http://aaa.jpg"
-              },{
-                "right": false
-                "text": "违规行为"
-                "image": "http://aaa.jpg"
-              }
-            ]
-          },{
-            "id": 1029,
-            "type": 2, //0:单选 1:多选 2:判断
-            "title": "驾驶机动车在道路上范围交通安全法的行为, 属于什么行为?"
-            "image": ["http://aaa.jpg", "http://aaa.jpg"]
-            "video": ["http://aaa.mp4", "http://aaa.mp4"]
-            "explain": "醉酒驾驶, 有公安机关约束至酒醒. 吊销机动车驾驶证, 已发追究刑事责任, 5年内不得重新取得驾驶证.", //文字讲解
-            "audioExplain": "http://aaa.mp3", //语音讲解
-            "videoExplain": "http://aaa.mp4", //语音讲解
-            "answers": [
-              {
-                "right": true //是否正确答案
-                "text": "违章行为" //文本答案内容
-                "image": "http://aaa.jpg" //图片答案内容
-              },{
-                "right": false
-                "text": "违法行为"
-                "image": "http://aaa.jpg"
-              }
-            ]
-          }
-        ]
-      }git
   }
 
 # 提交答题结果 [POST /exercise/submit]
