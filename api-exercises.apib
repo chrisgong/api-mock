@@ -24,6 +24,39 @@
       }
   }
 
+# 习题类型列表 [GET /exercise/type]
+
+|参数|必选|类型|参数说明|
+|---|---|---|---|
+|token|Y|String|用户ID|
+|参数|必选|类型|参数说明|
+
++ Parameters
+  + token:"qwkdpqwkdpjoj12312-0" (required,String) - 用户ID
+
++ Response 200 (application/json)
+  {
+      "c": 0,
+      "m": "",
+      "d": {
+        "types": [
+          {
+            "id": 1029,
+            "name": "专项练习一"
+          },{
+            "id": 1031,
+            "name": "专项练习二"
+          },{
+            "id": 1041,
+            "name": "专项练习三"
+          },{
+            "id": 1055,
+            "name": "专项练习四"
+          },
+        ]
+      }
+  }
+
 # 章节列表 [POST /exercise/section]
 
 |参数|必选|类型|参数说明|
@@ -32,7 +65,8 @@
 
 + Request (application/json)
   {
-    "token": "qwkdpqwkdpjoj12312-0"
+    "token": "qwkdpqwkdpjoj12312-0",
+    "type": 1029
   }
 
 + Response 200 (application/json)
@@ -69,9 +103,6 @@
   {
     "token": "qwkdpqwkdpjoj12312-0",
     "section": [1031, 1021],
-    "type": 0,
-    "pageNum": 1,
-    "pageSize": 10
   }
 
 + Response 200 (application/json)
@@ -80,8 +111,6 @@
       "m": "",
       "d": {
         "total": 1311, //题目总数
-        "pageSize": 10,
-        "pageNum": 2,
         "exercises": [
           {
             "id": 1029,
