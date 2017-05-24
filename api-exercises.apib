@@ -24,15 +24,19 @@
       }
   }
 
-# 习题类型列表 [GET /exercise/type]
+# 习题类型列表 [POST /exercise/type]
 
 |参数|必选|类型|参数说明|
 |---|---|---|---|
 |token|Y|String|用户ID|
+|role|Y|Integer|0: 免费用户、1: VIP用户|
 |参数|必选|类型|参数说明|
 
-+ Parameters
-  + token:"qwkdpqwkdpjoj12312-0" (required,String) - 用户ID
++ Request (application/json)
+  {
+    "token": "qwkdpqwkdpjoj12312-0",
+    "role": 0
+  }
 
 + Response 200 (application/json)
   {
@@ -62,10 +66,13 @@
 |参数|必选|类型|参数说明|
 |---|---|---|---|
 |token|Y|String|用户ID|
+|role|Y|Integer|0: 免费用户、1: VIP用户|
+|type|Y|Integer|习题类型|
 
 + Request (application/json)
   {
     "token": "qwkdpqwkdpjoj12312-0",
+    “role”: 0,
     "type": 1029
   }
 
@@ -110,6 +117,7 @@
       "c": 0,
       "m": "",
       "d": {
+        "eid": "qwodjokqwdokp", //题目集合唯一编号
         "total": 1311, //题目总数
         "exercises": [
           {
@@ -174,11 +182,13 @@
 |参数|必选|类型|参数说明|
 |---|---|---|---|
 |token|Y|String|用户ID|
+|eid|Y|String|题目编号|
 |result|Y|object[]|答题结果集合|
 
 + Request (application/json)
   {
-    "token": "qwkdpqwkdpjoj12312-0",
+    "token": "qwkdpqwkdpjoj12312-0,
+    "eid": "qwkdpqwkdpjoj12312-0",
     "result": [
       {
         "id": 1861, //题目ID
