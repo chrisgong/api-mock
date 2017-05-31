@@ -45,16 +45,16 @@
       "d": {
         "types": [
           {
-            "id": 1029,
+            "id": "1029",
             "name": "专项练习一"
           },{
-            "id": 1031,
+            "id": "1029",
             "name": "专项练习二"
           },{
-            "id": 1041,
+            "id": "1029",
             "name": "专项练习三"
           },{
-            "id": 1055,
+            "id": "1029",
             "name": "专项练习四"
           },
         ]
@@ -67,13 +67,13 @@
 |---|---|---|---|
 |token|Y|String|用户ID|
 |role|Y|Integer|0: 免费用户、1: VIP用户|
-|type|Y|Integer|习题类型|
+|type|Y|String|习题类型ID|
 
 + Request (application/json)
   {
     "token": "qwkdpqwkdpjoj12312-0",
     “role”: 0,
-    "type": 1029
+    "type": "1029"
   }
 
 + Response 200 (application/json)
@@ -83,16 +83,16 @@
       "d": {
         "chapters": [
           {
-            "id": 1029,
+            "id": "1029",
             "name": "专项练习一"
           },{
-            "id": 1031,
+            "id": "1029",
             "name": "专项练习二"
           },{
-            "id": 1041,
+            "id": "1029",
             "name": "专项练习三"
           },{
-            "id": 1055,
+            "id": "1029",
             "name": "专项练习四"
           },
         ]
@@ -104,12 +104,12 @@
 |参数|必选|类型|参数说明|
 |---|---|---|---|
 |token|Y|String|用户ID|
-|section|Y|Integer|章节ID|
+|section|Y|String[]|章节ID|
 
 + Request (application/json)
   {
     "token": "qwkdpqwkdpjoj12312-0",
-    "section": [1031, 1021],
+    "section": ["1031", "1021"],
   }
 
 + Response 200 (application/json)
@@ -183,7 +183,7 @@
 |---|---|---|---|
 |token|Y|String|用户ID|
 |eid|Y|String|题目编号|
-|result|Y|object[]|答题结果集合|
+|result|Y|Integer[]|答题结果集合|
 
 + Request (application/json)
   {
@@ -192,11 +192,11 @@
     "result": [
       {
         "id": 1861, //题目ID
-        "result": true //答题结果
-      },{
+        "result": 1 //答题结果
+      }, {
         "id": 1231,
-        "result": true
-      },
+        "result": 0 //0: 未答 1: 正确 2: 错误
+      }
     ]
   }
 
