@@ -24,7 +24,7 @@
       }
   }
 
-# 习题类型列表 [POST /exercise/type]
+# VIP习题类型列表 [POST /exercise/type]
 
 |参数|必选|类型|参数说明|
 |---|---|---|---|
@@ -104,6 +104,8 @@
 |参数|必选|类型|参数说明|
 |---|---|---|---|
 |token|Y|String|用户ID|
+|role|Y|Integer|用户身份|
+|type|Y|Integer|习题类型：0：顺序练习，1：随机练习，2：专项练习，3：章节练习，4：模拟考试，5：保过体验|
 |section|Y|Integer|章节ID|
 
 + Request (application/json)
